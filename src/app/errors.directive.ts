@@ -27,7 +27,7 @@ export class ErrorsDirective {
     //   this.border = '5px solid red';
     // }
 
-    if (trimmed === '') this.borderBottom = '5px solid #e32c28';
+    if (trimmed === '') this.border = '5px solid #e32c28';
   }
 
   @Input()
