@@ -22,7 +22,9 @@ export class SearchCombinationsComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.form = new FormGroup({
-      phonenumber: new FormControl('', { validators: [Validators.required] })
+      phonenumber: new FormControl('', {
+        validators: [Validators.required, Validators.minLength(10)]
+      })
     });
   }
 
@@ -32,9 +34,7 @@ export class SearchCombinationsComponent implements OnInit, AfterViewInit {
         number: this.form.value.phonenumber
       })
       .subscribe(
-        next => {
-          console.log(next.combinations);
-
+        (next: { combinations: Array<string> }) => {
           this.dataSource.data = next.combinations;
         },
         error => console.log(error)
@@ -44,3 +44,4 @@ export class SearchCombinationsComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
   }
+}

@@ -7,14 +7,15 @@
     (ngSubmit)="onSubmit()">
     <mat-form-field>
       <input
-        type="text"
+        type="number"
         matInput
         placeholder="Enter 10 digit phone number"
         minlength="10"
         maxlength="10"
+        customErrors
         formControlName="phonenumber">
     </mat-form-field>
-    <button type="submit" mat-raised-button color="primary">Submit</button>
+    <button type="submit" mat-raised-button color="primary" [disabled]="form.invalid">Submit</button>
   </form>
 </section>
 

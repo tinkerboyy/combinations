@@ -17,9 +17,10 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { SearchCombinationsComponent } from './search-combinations/search-combinations.component';
 import { CombinationsService } from './combinations.service';
+import { ErrorsDirective } from './errors.directive';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, SearchCombinationsComponent],
+  declarations: [AppComponent, HeaderComponent, SearchCombinationsComponent, ErrorsDirective],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
