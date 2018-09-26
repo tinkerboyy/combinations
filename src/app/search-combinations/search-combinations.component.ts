@@ -24,7 +24,6 @@ export class SearchCombinationsComponent implements OnInit, AfterViewInit {
     this.form = new FormGroup({
       phonenumber: new FormControl('', { validators: [Validators.required] })
     });
-  //  console.log(letterCombinations('7036891810'))
   }
 
   onSubmit() {
