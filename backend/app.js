@@ -7,6 +7,23 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
+const paginator = (items, page = 1, per_page) => {
+  (per_page = per_page || 10),
+    (offset = (page - 1) * per_page),
+    (paginatedItems = items.slice(offset).slice(0, per_page)),
+    (total_pages = Math.ceil(items.length / per_page));
+
+  return {
+    page: page,
+    per_page: per_page,
+    pre_page: page - 1 ? page - 1 : null,
+    next_page: total_pages > page ? page + 1 : null,
+    total: items.length,
+    total_pages: total_pages,
+    data: paginatedItems
+  };
+};
+
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Credentials', 'true');
@@ -34,11 +51,7 @@ app.use('/api/combinations', (req, res) => {
 
   if (req.query.number) {
     const { number } = req.query;
-    console.log(typeof number);
-
     const arr = number.split('');
-    console.log(arr);
-
     const newArr = arr.slice(0, -1).join('');
 
     if (!arr.length)
@@ -57,7 +70,7 @@ app.use('/api/combinations', (req, res) => {
 });
 
 app.get('/api/newCombinations', (req, res) => {
-  const { number } = req.query;
+  const { number, page, size } = req.query;
 
   if (number === '') return [];
   const letter = letterCombinations(number);
@@ -65,7 +78,8 @@ app.get('/api/newCombinations', (req, res) => {
   const combinations = letter.map(l => {
     return { number: `${l}` };
   });
-  res.status(200).json({ combinations });
+
+  res.status(200).json(paginator(combinations, page, size));
 });
 
 function letterCombinations(numbers) {

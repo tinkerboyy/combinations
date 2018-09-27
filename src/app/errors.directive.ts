@@ -23,10 +23,6 @@ export class ErrorsDirective {
 
     this.border = '';
 
-    // if (/[^\d]+/.test(trimmed)) {
-    //   this.border = '5px solid red';
-    // }
-
     if (trimmed === '') this.border = '5px solid #e32c28';
   }
 
@@ -34,10 +30,5 @@ export class ErrorsDirective {
   set customErrors(model) {
     const { field, value } = model;
     this.border = '';
-
-    // if (field === '') {
-    //   this.border = '1px solid red';
-    //   this.element.nativeElement.style.border = '1px solid #e32c28';
-    // }
   }
 }

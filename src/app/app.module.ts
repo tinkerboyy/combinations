@@ -11,7 +11,8 @@ import {
   MatInputModule,
   MatToolbarModule,
   MatTableModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatListModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -19,13 +20,15 @@ import { HeaderComponent } from './header/header.component';
 import { SearchCombinationsComponent } from './search-combinations/search-combinations.component';
 import { CombinationsService } from './combinations.service';
 import { ErrorsDirective } from './errors.directive';
+import { PaginationComponent } from './pagination/pagination.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     SearchCombinationsComponent,
-    ErrorsDirective
+    ErrorsDirective,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,8 @@ import { ErrorsDirective } from './errors.directive';
     MatInputModule,
     MatToolbarModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatListModule
   ],
   providers: [CombinationsService],
   bootstrap: [AppComponent]
